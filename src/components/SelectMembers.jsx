@@ -1,14 +1,23 @@
-import React from 'react'
-import {members} from '../mock/members.js'
+import React, {PropTypes} from 'react'
 import _ from 'ramda'
+import reduxFrom from 'redux-form'
+import {connect} from 'react-redux'
+
+import {members} from '../mock/members.js'
+import * as SelectMembersActions from '../actions/select_member_actions'
+
 
 class SelectMembers extends React.Component {
     renderList(data) {
+        const {members, handleSelect} = this.props;
         const mapDataToCheckbox = (value) => {
-            const id = `id__${value}`
+            const id = `id__${value}`;
             return (
-                <li>
-                    <input type="checkbox" id={id} key={value}/>
+                <li key={value.toLowerCase()}>
+                    <input
+                        onChange={e => handleSelect(value, e.target.checked)}
+                        type="checkbox"
+                        id={id}/>
                     <label htmlFor={id}>{value}</label>
                 </li>
             );
@@ -17,14 +26,24 @@ class SelectMembers extends React.Component {
     }
 
     render() {
-        // console.log(data);
         return (
             <div className='select-members'>
+                <h3 className='title'>Select Members</h3>
                 <ul>{this.renderList(members)}</ul>
-                <button>next</button>
+                <span className='desc'>members: {this.props.members?this.props.members.toString():0}</span>
+                <button onClick={e => this.props.selectOk()}>next</button>
             </div>
         );
     }
 }
 
-export default SelectMembers;
+const mapStateToProps = (state) => {
+    return {
+        members: state.get('members')
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    SelectMembersActions
+)(SelectMembers);

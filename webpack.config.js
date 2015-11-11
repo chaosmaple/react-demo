@@ -7,7 +7,7 @@ module.exports = {
         './src/index.jsx'
         // './src/index.html'
     ],
-    // devtool: 'redux-devtool',
+    devtool: 'source-map',
     module: {
         loaders: [{
             test: /\.jsx?$/,

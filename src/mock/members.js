@@ -1,12 +1,9 @@
 export const members = [
-    "huangpei",
-    "juewen",
-    "yangcheng",
-    "jiaoyang",
-    "yangrui",
-    "linfan",
-    "wenjie",
-    "yunkun",
-    "duying",
-    "yangyang"
+    'Hong',
+    'Doing',
+    'Chai',
+    'Dawei',
+    'Lu',
+    'Yue',
+    'Yang'
 ];

@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Route, Router, Link} from 'react-router'
+import {Route, Router, IndexRoute, Link} from 'react-router'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
 
+import reducer from './reducers/reducer'
 import Home from './components/Home'
 import MainProcess from './components/MainProcess'
 
@@ -11,14 +14,18 @@ class App extends React.Component {
     }
 }
 
+const store = createStore(reducer);
+
 const routes = (
-    <Route component={App}>
-        <Route path='/' component={Home}/>
+    <Route path='/' component={App}>
+        <IndexRoute component={Home}/>
         {MainProcess.Route}
     </Route>
 );
 
 ReactDOM.render(
-    <Router>{routes}</Router>,
+    <Provider store={store}>
+        <Router>{routes}</Router>
+    </Provider>,
     document.getElementById('app')
 );

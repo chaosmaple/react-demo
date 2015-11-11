@@ -8,7 +8,7 @@ class MainProcess extends React.Component {
     render() {
         return (
             <div className="main-process">
-                <Link to='/'>回到首页</Link>
+                <Link to='/'>Home</Link>
                 <div className="container">
                     {this.props.children}
                 </div>
@@ -19,7 +19,7 @@ class MainProcess extends React.Component {
 
 MainProcess.Route = (
     <Route component={MainProcess}>
-        <Route path='/dutch' component={Dutch} />
+        {Dutch.Route}
         <Route path='/prepay' component={Prepay} />
     </Route>
 );
