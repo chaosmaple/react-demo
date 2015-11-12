@@ -13,7 +13,7 @@ class SelectMembers extends React.Component {
         const mapDataToCheckbox = (value) => {
             const id = `id__${value}`;
             return (
-                <li key={value.toLowerCase()}>
+                <li key={value}>
                     <input
                         onChange={e => handleSelect(value, e.target.checked)}
                         type="checkbox"
@@ -31,7 +31,8 @@ class SelectMembers extends React.Component {
                 <h3 className='title'>Select Members</h3>
                 <ul>{this.renderList(members)}</ul>
                 <span className='desc'>members: {this.props.members?this.props.members.toString():0}</span>
-                <button onClick={e => this.props.selectOk()}>next</button>
+                <br/>
+                <button onClick={e => this.props.setMembers()}>SET MEMBERS</button>
             </div>
         );
     }

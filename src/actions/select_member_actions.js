@@ -1,15 +1,14 @@
 export const handleSelect = (member, checked) => {
     return {
-        type: 'SET_MEMBERS',
+        type: 'SELECT_MEMBERS',
         member: {
             [member]: checked
         }
     }
 }
 
-export const selectOk = (a) => {
+export const setMembers = () => {
     return {
-        type: 'MEMBERS_OK',
-        aaa: a
+        type: 'SET_MEMBERS'
     }
 }
