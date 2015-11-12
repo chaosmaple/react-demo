@@ -1,4 +1,4 @@
-import {List, Map} from 'immutable'
+import {fromJS, List, Map} from 'immutable'
 
 const selectMembers = (state, member) => {
     if (state.get('members')) {
@@ -9,12 +9,13 @@ const selectMembers = (state, member) => {
 }
 
 const setMembers = (state) => {
-    const members = state.get('members');
-    const b = Map(members).filter(checked => checked);
-    return state.set('members', b);
+    return state.updateIn(
+        ['members'],
+        members => members.filter(checked => checked)
+    );
 }
 
-export default (state = Map(), action) => {
+export default (state = fromJS({members: {}}), action) => {
     switch (action.type) {
         case 'SELECT_MEMBERS':
             return selectMembers(state, action.member);

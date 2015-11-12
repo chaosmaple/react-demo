@@ -16,6 +16,7 @@ class SelectMembers extends React.Component {
                 <li key={value}>
                     <input
                         onChange={e => handleSelect(value, e.target.checked)}
+                        checked={members.toJS()[value]}
                         type="checkbox"
                         id={id}/>
                     <label htmlFor={id}>{value}</label>
